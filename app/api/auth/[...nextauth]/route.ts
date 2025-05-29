@@ -7,8 +7,7 @@ import bcrypt from "bcryptjs";
 import prisma from "@/utils/db";
 import { nanoid } from "nanoid";
 
-export const authOptions: any = {
-  // Configure one or more authentication providers
+const authOptions = {
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -17,28 +16,28 @@ export const authOptions: any = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: any) {
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) return null;
 
-        try {
-          const user = await prisma.user.findFirst({
-            where: {
-              email: credentials.email,
-            },
-          });
-          if (user) {
-            const isPasswordCorrect = await bcrypt.compare(
-              credentials.password,
-              user.password!
-            );
-            if (isPasswordCorrect) {
-              return user;
-            }
-          }
-        } catch (err: any) {
-          throw new Error(err);
-        }
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email },
+        });
+
+        if (!user || !user.password) return null;
+
+        const isValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+        if (!isValid) return null;
+
+        return {
+          id: user.id,
+          email: user.email,
+          role: user.role,
+        };
       },
-    })
+    }),
     // GithubProvider({
     //   clientId: process.env.GITHUB_ID ?? "",
     //   clientSecret: process.env.GITHUB_SECRET ?? "",
@@ -50,10 +49,11 @@ export const authOptions: any = {
     // ...add more providers here if you want. You can find them on nextauth website.
   ],
   callbacks: {
-    async signIn({ user, account }: { user: AuthUser; account: Account }) {
+    async signIn({ user, account }: any) {
       if (account?.provider == "credentials") {
         return true;
       }
+      return false;
       // if (account?.provider == "github") {
 
       //   try {
@@ -99,5 +99,5 @@ export const authOptions: any = {
   },
 };
 
-export const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export const GET = NextAuth(authOptions);
+export const POST = NextAuth(authOptions);

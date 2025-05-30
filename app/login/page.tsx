@@ -1,5 +1,5 @@
 "use client";
-import { CustomButton, SectionTitle } from "@/components";
+import { CustomButton } from "@/components";
 import { isValidEmailAddressFormat } from "@/lib/utils";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -58,11 +58,10 @@ const LoginPage = () => {
   }
   return (
     <div className="bg-white">
-      <SectionTitle title="Login" path="Home | Login" />
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8 bg-white">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-2xl font-normal leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            Đăng nhập vào tài khoản của bạn
           </h2>
         </div>
 
@@ -74,7 +73,7 @@ const LoginPage = () => {
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Email address
+                  Email
                 </label>
                 <div className="mt-2">
                   <input
@@ -93,7 +92,7 @@ const LoginPage = () => {
                   htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Password
+                  Mật khẩu
                 </label>
                 <div className="mt-2">
                   <input
@@ -119,7 +118,7 @@ const LoginPage = () => {
                     htmlFor="remember-me"
                     className="ml-3 block text-sm leading-6 text-gray-900"
                   >
-                    Remember me
+                    Nhớ mật khẩu
                   </label>
                 </div>
 
@@ -128,7 +127,7 @@ const LoginPage = () => {
                     href="#"
                     className="font-semibold text-black hover:text-black"
                   >
-                    Forgot password?
+                    Quên mật khẩu?
                   </a>
                 </div>
               </div>
@@ -136,7 +135,7 @@ const LoginPage = () => {
               <div>
                 <CustomButton
                   buttonType="submit"
-                  text="Sign in"
+                  text="Đăng nhập"
                   paddingX={3}
                   paddingY={1.5}
                   customWidth="full"
@@ -155,7 +154,7 @@ const LoginPage = () => {
                 </div>
                 <div className="relative flex justify-center text-sm font-medium leading-6">
                   <span className="bg-white px-6 text-gray-900">
-                    Or continue with
+                    Hoặc đăng nhập bằng
                   </span>
                 </div>
               </div>

@@ -13,9 +13,13 @@ import ProductItem from "./ProductItem";
 import Heading from "./Heading";
 
 const ProductsSection = async () => {
-  // sending API request for getting all products
-  const data = await fetch("http://localhost:3001/api/products");
-  const products = await data.json();
+  let products = [];
+  try {
+    const data = await fetch("http://localhost:3001/api/products");
+    products = await data?.json() || [];
+  } catch (error) {
+
+  }
   return (
     <div className="bg-blue-500 border-t-4 border-white">
       <div className="max-w-screen-2xl mx-auto pt-20">

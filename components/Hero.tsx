@@ -17,28 +17,26 @@ const Hero = () => {
       <div className="grid grid-cols-3 items-center justify-items-center px-10 gap-x-10 max-w-screen-2xl mx-auto h-full max-lg:grid-cols-1 max-lg:py-10 max-lg:gap-y-10">
         <div className="flex flex-col gap-y-5 max-lg:order-last col-span-2">
           <h1 className="text-6xl text-white font-bold mb-3 max-xl:text-5xl max-md:text-4xl max-sm:text-3xl">
-            THE PRODUCT OF THE FUTURE
+            SẢN PHẨM MỚI
           </h1>
           <p className="text-white max-sm:text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor modi
-            iure laudantium necessitatibus ab, voluptates vitae ullam. Officia
-            ipsam iusto beatae nesciunt, consequatur deserunt minima maiores
-            earum obcaecati. Optio, nam!
+            Cá mai rim tỏi ớt  với hương vị thơm ngon của món cá mai được tẩm theo một công thức truyền thống đặc sắc của Bình Định.
+            Món có sự kết hợp của vị dai thơm từ khô, vị cay the the của ớt và thơm mùi tỏi. Thêm một chút đường để tạo độ kết dính. Và để miếng cá mai được thấm dẻo tròn vị. Đây là món ăn vặt chiều lòng được nhiều dân sành ăn . Món Cá mai rim tỏi ớt  quý khách có thể làm mồi nhậu rai rai với bia và rượu, hay ăn với cơm, mì hoặc ăn vặt thì không có vị ngon nào diễn tả được bằng lời bởi hương vị cá rim tỏi ớt bình định trứ danh này rất đặc biệt mà nơi khác không thể kiếm được.
           </p>
           <div className="flex gap-x-1 max-lg:flex-col max-lg:gap-y-1">
             <button className="bg-white text-blue-600 font-bold px-12 py-3 max-lg:text-xl max-sm:text-lg hover:bg-gray-100">
-              BUY NOW
+              MUA NGAY
             </button>
             <button className="bg-white text-blue-600 font-bold px-12 py-3 max-lg:text-xl max-sm:text-lg hover:bg-gray-100">
-              LEARN MORE
+              XEM CHI TIẾT
             </button>
           </div>
         </div>
         <Image
-          src="/watch for banner.png"
+          src="/dashboard/new/ca-mai-riem.jpg"
           width={400}
           height={400}
-          alt="smart watch"
+          alt="ca mai"
           className="max-md:w-[300px] max-md:h-[300px] max-sm:h-[250px] max-sm:w-[250px] w-auto h-auto"
         />
       </div>

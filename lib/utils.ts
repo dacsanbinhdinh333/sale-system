@@ -3,61 +3,61 @@ export const categoryMenuList = [
     id: 1,
     title: "Smart Phones",
     src: "/smart phone icon.png",
-    href: "/shop/smart-phones"
+    href: "/shop/smart-phones",
   },
   {
     id: 2,
     title: "Tablets",
     src: "/tablet icon.png",
-    href: "/shop/tablets"
+    href: "/shop/tablets",
   },
   {
     id: 3,
     title: "Mouses",
     src: "/mouse icon.png",
-    href: "/shop/mouses"
+    href: "/shop/mouses",
   },
   {
     id: 4,
     title: "Cameras",
     src: "/camera icon.png",
-    href: "/shop/cameras"
+    href: "/shop/cameras",
   },
   {
     id: 5,
     title: "Smart Watches",
     src: "/smart watch.png",
-    href: "/shop/watches"
+    href: "/shop/watches",
   },
   {
     id: 6,
     title: "Laptops",
     src: "/laptop icon.png",
-    href: "/shop/laptops"
+    href: "/shop/laptops",
   },
   {
     id: 7,
     title: "PCs",
     src: "/pc icon.png",
-    href: "/shop/computers"
+    href: "/shop/computers",
   },
   {
     id: 8,
     title: "Printers",
     src: "/printers icon.png",
-    href: "/shop/printers"
+    href: "/shop/printers",
   },
   {
     id: 9,
     title: "Earbuds",
     src: "/ear buds icon.png",
-    href: "/shop/earbuds"
+    href: "/shop/earbuds",
   },
   {
     id: 10,
     title: "Head Phones",
     src: "/headphone icon.png",
-    href: "/shop/headphones"
+    href: "/shop/headphones",
   },
 ];
 
@@ -84,25 +84,25 @@ export const incentives = [
 
 export const navigation = {
   sale: [
-    { name: "Discounts", href: "#" },
-    { name: "News", href: "#" },
-    { name: "Register Discounts", href: "#" },
+    { name: "Giảm giá", href: "#" },
+    { name: "Tin tức", href: "#" },
+    { name: "Đăng ký giảm giá", href: "#" },
   ],
   about: [
-    { name: "About Singitronic", href: "#" },
-    { name: "Work With Us", href: "#" },
-    { name: "Company Profile", href: "#" },
+    { name: "Giới thiệu", href: "#" },
+    { name: "Cộng tác với chúng tôi", href: "#" },
+    { name: "Hồ sơ công ty", href: "#" },
   ],
   buy: [
-    { name: "Singitronic Loyalty Card", href: "#" },
-    { name: "Terms Of Use", href: "#" },
-    { name: "Privacy Policy", href: "#" },
-    { name: "Complaints", href: "#" },
-    { name: "Partners", href: "#" },
+    { name: "Thẻ khách hàng thân thiết", href: "#" },
+    { name: "Điều khoản sử dụng", href: "#" },
+    { name: "Chính sách bảo mật", href: "#" },
+    { name: "Khiếu nại", href: "#" },
+    { name: "Đối tác", href: "#" },
   ],
   help: [
-    { name: "Contact", href: "#" },
-    { name: "How to Buy at Singitronic", href: "#" },
+    { name: "Liên Hệ", href: "#" },
+    { name: "Hướng dẫn mua hàng", href: "#" },
     { name: "FAQ", href: "#" },
   ],
 };
@@ -125,7 +125,7 @@ export const isValidCardNumber = (input: string) => {
   // test for credit card number between 13 and 19 characters
   const regex = /^\d{13,19}$/;
   return regex.test(cleanedInput);
-}
+};
 
 export const isValidCreditCardExpirationDate = (input: string) => {
   // simple expiration date format check

@@ -1,13 +1,3 @@
-// *********************
-// Role of the component: Footer component
-// Name of the component: Footer.tsx
-// Developer: Aleksandar Kuzmanovic
-// Version: 1.0
-// Component call: <Footer />
-// Input parameters: no input parameters
-// Output: Footer component
-// *********************
-
 import { navigation } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
@@ -22,8 +12,8 @@ const Footer = () => {
         <div className="mx-auto max-w-screen-2xl px-6 lg:px-8 pt-24 pb-14">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <Image
-              src="/logo v1.png"
-              alt="Singitronic logo"
+              src="/logo-v1.png"
+              alt="logo"
               width={250}
               height={250}
               className="h-auto w-auto"
@@ -49,7 +39,7 @@ const Footer = () => {
                 </div>
                 <div className="mt-10 md:mt-0">
                   <h3 className="text-base font-bold leading-6 text-blue-600">
-                    About Us
+                    Về chúng tôi
                   </h3>
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.about.map((item) => (
@@ -85,7 +75,7 @@ const Footer = () => {
                 </div>
                 <div className="mt-10 md:mt-0">
                   <h3 className="text-base font-bold leading-6 text-blue-600">
-                    Support
+                    Hổ trợ
                   </h3>
                   <ul role="list" className="mt-6 space-y-4">
                     {navigation.help.map((item) => (

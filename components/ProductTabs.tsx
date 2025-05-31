@@ -23,21 +23,19 @@ const ProductTabs = ({ product }: { product: Product }) => {
       <div role="tablist" className="tabs tabs-bordered">
         <a
           role="tab"
-          className={`tab text-lg text-black pb-8 max-[500px]:text-base max-[400px]:text-sm max-[370px]:text-xs ${
-            currentProductTab === 0 && "tab-active"
-          }`}
+          className={`tab text-lg text-black pb-8 max-[500px]:text-base max-[400px]:text-sm max-[370px]:text-xs ${currentProductTab === 0 && "tab-active"
+            }`}
           onClick={() => setCurrentProductTab(0)}
         >
-          Description
+          Mô tả sản phẩm
         </a>
         <a
           role="tab"
-          className={`tab text-black text-lg pb-8 max-[500px]:text-base max-[400px]:text-sm max-[370px]:text-xs ${
-            currentProductTab === 1 && "tab-active"
-          }`}
+          className={`tab text-black text-lg pb-8 max-[500px]:text-base max-[400px]:text-sm max-[370px]:text-xs ${currentProductTab === 1 && "tab-active"
+            }`}
           onClick={() => setCurrentProductTab(1)}
         >
-          Additional info
+          Thông tin bổ sung
         </a>
       </div>
       <div className="pt-5">
@@ -53,22 +51,17 @@ const ProductTabs = ({ product }: { product: Product }) => {
               <tbody>
                 {/* row 1 */}
                 <tr>
-                  <th>Manufacturer:</th>
+                  <th>Nơi sản xuất:</th>
                   <td>{product?.manufacturer}</td>
                 </tr>
                 {/* row 2 */}
                 <tr>
-                  <th>Category:</th>
+                  <th>Loại sản phẩm:</th>
                   <td>
                     {product?.category?.name
                       ? formatCategoryName(product?.category?.name)
-                      : "No category"}
+                      : "Chưa xác định"}
                   </td>
-                </tr>
-                {/* row 3 */}
-                <tr>
-                  <th>Color:</th>
-                  <td>Silver, LightSlateGray, Blue</td>
                 </tr>
               </tbody>
             </table>

@@ -70,10 +70,10 @@ const SingleProductPage = async ({ params }: SingleProductPageProps) => {
             <div className="flex flex-col gap-y-2 max-[500px]:items-center">
               <AddToWishlistBtn product={product} slug={params.productSlug} />
               <p className="text-lg">
-                SKU: <span className="ml-1">abccd-18</span>
+                Mã sản phẩm: <span className="ml-1">abccd-18</span>
               </p>
               <div className="text-lg flex gap-x-2">
-                <span>Share:</span>
+                <span>Chia sẻ:</span>
                 <div className="flex items-center gap-x-1 text-2xl">
                   <FaSquareFacebook />
                   <FaSquareXTwitter />

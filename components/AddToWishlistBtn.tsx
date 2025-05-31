@@ -1,15 +1,5 @@
 "use client";
 
-// *********************
-// Role of the component: Button for adding and removing product to the wishlist on the single product page
-// Name of the component: AddToWishlistBtn.tsx
-// Developer: Aleksandar Kuzmanovic
-// Version: 1.0
-// Component call: <AddToWishlistBtn product={product} slug={slug}  />
-// Input parameters: AddToWishlistBtnProps interface
-// Output: Two buttons with adding and removing from the wishlist functionality
-// *********************
-
 import { useWishlistStore } from "@/app/_zustand/wishlistStore";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
@@ -120,7 +110,7 @@ const AddToWishlistBtn = ({ product, slug }: AddToWishlistBtnProps) => {
           onClick={removeFromWishlistFun}
         >
           <FaHeartCrack className="text-xl text-custom-black" />
-          <span className="text-lg">REMOVE FROM WISHLIST</span>
+          <span className="text-lg">XÓA KHỎI DANH SÁCH YÊU THÍCH</span>
         </p>
       ) : (
         <p
@@ -128,7 +118,7 @@ const AddToWishlistBtn = ({ product, slug }: AddToWishlistBtnProps) => {
           onClick={addToWishlistFun}
         >
           <FaHeart className="text-xl text-custom-black" />
-          <span className="text-lg">ADD TO WISHLIST</span>
+          <span className="text-lg">THÊM VÀO DANH SÁCH YÊU THÍCH</span>
         </p>
       )}
     </>

@@ -303,7 +303,7 @@ const DashboardProductDetails = ({
         <div>
           <label className="form-control">
             <div className="label">
-              <span className="label-text">Product description:</span>
+              <span className="label-text">Chi tiết sản phẩm:</span>
             </div>
             <textarea
               className="textarea textarea-bordered h-24"

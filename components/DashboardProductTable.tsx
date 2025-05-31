@@ -19,7 +19,7 @@ const DashboardProductTable = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/products?mode=admin", {cache: "no-store"})
+    fetch("http://localhost:3001/api/products?mode=admin", { cache: "no-store" })
       .then((res) => {
         return res.json();
       })
@@ -55,7 +55,7 @@ const DashboardProductTable = () => {
                 </label>
               </th>
               <th>Product</th>
-              <th>Stock Availability</th>
+              <th>Stock Tình trạng</th>
               <th>Price</th>
               <th></th>
             </tr>
@@ -94,12 +94,12 @@ const DashboardProductTable = () => {
                   </td>
 
                   <td>
-                    { product?.inStock ? (<span className="badge badge-success text-white badge-sm">
+                    {product?.inStock ? (<span className="badge badge-success text-white badge-sm">
                       In stock
                     </span>) : (<span className="badge badge-error text-white badge-sm">
                       Out of stock
-                    </span>) }
-                    
+                    </span>)}
+
                   </td>
                   <td>${product?.price}</td>
                   <th>

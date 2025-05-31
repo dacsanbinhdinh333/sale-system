@@ -54,7 +54,7 @@ const Filters = () => {
       <h3 className="text-2xl mb-2">Filters</h3>
       <div className="divider"></div>
       <div className="flex flex-col gap-y-1">
-        <h3 className="text-xl mb-2">Availability</h3>
+        <h3 className="text-xl mb-2">Tình trạng</h3>
         <div className="form-control">
           <label className="cursor-pointer flex items-center">
             <input
@@ -71,7 +71,7 @@ const Filters = () => {
               }
               className="checkbox"
             />
-            <span className="label-text text-lg ml-2 text-black">In stock</span>
+            <span className="label-text text-lg ml-2 text-black">Còn hàng</span>
           </label>
         </div>
 
@@ -92,7 +92,7 @@ const Filters = () => {
               className="checkbox"
             />
             <span className="label-text text-lg ml-2 text-black">
-              Out of stock
+              Hết hàng
             </span>
           </label>
         </div>

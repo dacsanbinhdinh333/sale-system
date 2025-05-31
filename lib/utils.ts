@@ -86,15 +86,15 @@ export const navigation = {
   sale: [
     { name: "Giảm giá", href: "#" },
     { name: "Tin tức", href: "#" },
-    { name: "Đăng ký giảm giá", href: "#" },
+    { name: "Đăng ký nhận ưu đãi", href: "#" },
   ],
   about: [
-    { name: "Giới thiệu", href: "#" },
-    { name: "Cộng tác với chúng tôi", href: "#" },
+    { name: "Giới thiệu về Đặc sản", href: "#" },
+    { name: "Tuyển dụng", href: "#" },
     { name: "Hồ sơ công ty", href: "#" },
   ],
   buy: [
-    { name: "Thẻ khách hàng thân thiết", href: "#" },
+    { name: "Thẻ thành viên", href: "#" },
     { name: "Điều khoản sử dụng", href: "#" },
     { name: "Chính sách bảo mật", href: "#" },
     { name: "Khiếu nại", href: "#" },
@@ -102,8 +102,8 @@ export const navigation = {
   ],
   help: [
     { name: "Liên Hệ", href: "#" },
-    { name: "Hướng dẫn mua hàng", href: "#" },
-    { name: "FAQ", href: "#" },
+    { name: "Hướng dẫn mua hàng tại Đặc sản Bình Định", href: "#" },
+    { name: "Câu hỏi thường gặp (FAQ)", href: "#" },
   ],
 };
 

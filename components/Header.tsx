@@ -1,14 +1,5 @@
-// *********************
-// Role of the component: Header component
-// Name of the component: Header.tsx
-// Developer: Aleksandar Kuzmanovic
-// Version: 1.0
-// Component call: <Header />
-// Input parameters: no input parameters
-// Output: Header component
-// *********************
-
 "use client";
+
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import HeaderTop from "./HeaderTop";
@@ -72,55 +63,57 @@ const Header = () => {
   }, [session?.user?.email, wishlist.length]);
 
   return (
-    <header className="bg-white">
+    <header className="bg-white shadow-md sticky top-0 z-50">
       <HeaderTop />
       {pathname.startsWith("/admin") === false && (
-        <div className="h-32 bg-white flex items-center justify-between px-16 max-[1320px]:px-16 max-md:px-6 max-lg:flex-col max-lg:gap-y-7 max-lg:justify-center max-lg:h-60 max-w-screen-2xl mx-auto">
-          <Link href="/">
-            <img src="/logo-v1.png" width={300} height={300} alt="logo" className="relative right-5 max-[1023px]:w-56" />
+        <div className="h-28 bg-white flex items-center justify-between px-8 md:px-16 max-w-screen-2xl mx-auto transition-all duration-300 max-lg:flex-col max-lg:gap-y-5 max-lg:justify-center max-lg:h-auto py-4">
+          <Link href="/" className="flex items-center">
+            <Image src="/logo-v1.png" width={180} height={60} alt="logo" className="w-44 md:w-56 h-auto object-contain" />
           </Link>
-          <SearchInput />
-          <div className="flex gap-x-10">
+          <div className="flex-1 flex justify-center w-full max-w-xl mx-4 max-lg:mx-0 max-lg:w-full">
+            <SearchInput />
+          </div>
+          <div className="flex gap-x-6 md:gap-x-10 items-center mt-0 max-lg:mt-4">
             <HeartElement wishQuantity={wishQuantity} />
             <CartElement />
           </div>
         </div>
       )}
       {pathname.startsWith("/admin") === true && (
-        <div className="flex justify-between h-32 bg-white items-center px-16 max-[1320px]:px-10  max-w-screen-2xl mx-auto max-[400px]:px-5">
-          <Link href="/">
+        <div className="flex justify-between items-center h-24 bg-white px-4 md:px-10 lg:px-16 max-w-screen-2xl mx-auto border-b border-gray-100">
+          <Link href="/" className="flex items-center">
             <Image
               src="/logo-v1.png"
-              width={130}
-              height={130}
+              width={120}
+              height={40}
               alt="logo"
-              className="w-56 h-auto"
+              className="w-32 md:w-44 h-auto object-contain"
             />
           </Link>
-          <div className="flex gap-x-5 items-center">
-            <FaBell className="text-xl" />
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="w-10">
+          <div className="flex gap-x-4 md:gap-x-8 items-center">
+            <FaBell className="text-xl md:text-2xl text-blue-600 hover:text-blue-800 transition-colors cursor-pointer" />
+            <div className="dropdown dropdown-end relative">
+              <div tabIndex={0} role="button" title="Tài khoản" className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 shadow hover:shadow-lg transition-all cursor-pointer bg-white">
                 <Image
                   src="/randomuser.jpg"
                   alt="random profile photo"
-                  width={30}
-                  height={30}
-                  className="w-full h-full rounded-full"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 rounded-full object-cover"
                 />
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content absolute right-0 mt-2 z-50 menu p-2 shadow-lg bg-white rounded-xl w-48 border border-gray-100 animate-fade-in"
               >
                 <li>
-                  <Link href="/admin">Dashboard</Link>
+                  <Link href="/admin" className="block px-4 py-2 hover:bg-blue-50 rounded-lg transition">Dashboard</Link>
                 </li>
                 <li>
-                  <a>Profile</a>
+                  <Link href="/profile" className="block px-4 py-2 hover:bg-blue-50 rounded-lg transition">Profile</Link>
                 </li>
                 <li onClick={handleLogout}>
-                  <a href="#">Logout</a>
+                  <a className="block px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition cursor-pointer">Logout</a>
                 </li>
               </ul>
             </div>

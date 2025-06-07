@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "backend",
       script: "app.js",
-      cwd: "server",
+      cwd: "src/server",
       env: {
         PORT: "3001",
       },

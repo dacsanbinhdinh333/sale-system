@@ -3,10 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer, Header } from "@/components";
 import SessionProvider from "@/utils/SessionProvider";
-import Providers from "@/Providers";
 import { getServerSession } from "next-auth";
 import 'svgmap/dist/svgMap.min.css';
-
+import Providers from "@/Providers";
 
 
 

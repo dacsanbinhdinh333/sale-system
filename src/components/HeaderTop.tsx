@@ -21,7 +21,9 @@ const HeaderTop = () => {
         <ul className="flex items-center gap-x-6 text-sm md:text-base font-medium max-[370px]:gap-x-2">
           <li className="flex items-center gap-x-2">
             <FaHeadphones className="text-white text-lg" />
-            <span className="hidden sm:inline">098 4145 495</span>
+            <a href="tel:0984145495" className="hidden sm:inline hover:underline focus:underline outline-none" tabIndex={0}>
+              098 4145 495
+            </a>
           </li>
           <li className="flex items-center gap-x-2">
             <FaRegEnvelope className="text-white text-lg" />

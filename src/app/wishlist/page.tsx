@@ -1,45 +1,32 @@
 "use client";
 import { SectionTitle, WishItem } from "@/components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useWishlistStore } from "../_zustand/wishlistStore";
 import { nanoid } from "nanoid";
 import { useSession } from "next-auth/react";
-
-
+import { fetchWishlistByUserId, fetchUserByEmail } from "@/utils/api";
 
 const WishlistPage = () => {
   const { data: session, status } = useSession();
-  const {wishlist, setWishlist}= useWishlistStore();
+  const { wishlist, setWishlist } = useWishlistStore();
 
   const getWishlistByUserId = async (id: string) => {
-    const response = await fetch(`http://localhost:3001/api/wishlist/${id}`, {
-      cache: "no-store",
-    });
-    const wishlist = await response.json();
-
-    const productArray: {
-      id: string;
-      title: string;
-      price: number;
-      image: string;
-      slug:string
-      stockAvailabillity: number;
-    }[] = [];
-    
-    wishlist.map((item:any) => productArray.push({id: item?.product?.id, title: item?.product?.title, price: item?.product?.price, image: item?.product?.mainImage, slug: item?.product?.slug, stockAvailabillity: item?.product?.inStock}));
-    
+    const wishlist = await fetchWishlistByUserId(id);
+    const productArray = wishlist.map((item: any) => ({
+      id: item?.product?.id,
+      title: item?.product?.title,
+      price: item?.product?.price,
+      image: item?.product?.mainImage,
+      slug: item?.product?.slug,
+      stockAvailabillity: item?.product?.inStock,
+    }));
     setWishlist(productArray);
   };
 
   const getUserByEmail = async () => {
     if (session?.user?.email) {
-      fetch(`http://localhost:3001/api/users/email/${session?.user?.email}`, {
-        cache: "no-store",
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          getWishlistByUserId(data?.id);
-        });
+      const data = await fetchUserByEmail(session?.user?.email);
+      getWishlistByUserId(data?.id);
     }
   };
 

@@ -103,25 +103,25 @@ const AddToWishlistBtn = ({ product, slug }: AddToWishlistBtnProps) => {
   }, [session?.user?.email, wishlist]);
 
   return (
-    <>
+    <div className="flex items-center gap-2 mt-4">
       {isProductInWishlist ? (
-        <p
-          className="flex items-center gap-x-2 cursor-pointer"
+        <button
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-100 hover:bg-red-200 transition-colors border border-red-300 shadow-sm text-red-600 font-semibold text-base focus:outline-none focus:ring-2 focus:ring-red-400"
           onClick={removeFromWishlistFun}
         >
-          <FaHeartCrack className="text-xl text-custom-black" />
-          <span className="text-lg">XÓA KHỎI DANH SÁCH YÊU THÍCH</span>
-        </p>
+          <FaHeartCrack className="text-xl text-red-500" />
+          <span>XÓA KHỎI DANH SÁCH YÊU THÍCH</span>
+        </button>
       ) : (
-        <p
-          className="flex items-center gap-x-2 cursor-pointer"
+        <button
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-100 hover:bg-blue-200 transition-colors border border-blue-300 shadow-sm text-blue-700 font-semibold text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
           onClick={addToWishlistFun}
         >
-          <FaHeart className="text-xl text-custom-black" />
-          <span className="text-lg">THÊM VÀO DANH SÁCH YÊU THÍCH</span>
-        </p>
+          <FaHeart className="text-xl text-blue-500" />
+          <span>THÊM VÀO DANH SÁCH YÊU THÍCH</span>
+        </button>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,14 +1,14 @@
 import React from "react";
 import ProductItem from "./ProductItem";
 import Heading from "./Heading";
+import { fetchProducts } from "@/utils/api";
 
 const ProductsSection = async () => {
   let products = [];
   try {
-    const data = await fetch("http://localhost:3001/api/products");
-    products = await data?.json() || [];
+    products = await fetchProducts();
   } catch (error) {
-
+    // Xử lý lỗi nếu cần
   }
   return (
     <div className="bg-blue-500 border-t-4 border-white">

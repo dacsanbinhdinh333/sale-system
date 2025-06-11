@@ -1,6 +1,7 @@
 "use client";
 import { DashboardSidebar } from "@/components";
 import { convertCategoryNameToURLFriendly as convertSlugToURLFriendly } from "@/utils/categoryFormating";
+import { createProduct, uploadMainImage, fetchCategories } from "@/utils/api";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -37,80 +38,42 @@ const AddNewProduct = () => {
       toast.error("Please enter values in input fields");
       return;
     }
-
-    const requestOptions: any = {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(product),
-    };
-    fetch(`http://localhost:3001/api/products`, requestOptions)
-      .then((response) => {
-        if (response.status === 201) {
-          return response.json();
-        } else {
-          throw Error("There was an error while creating product");
-        }
-      })
-      .then((data) => {
-        toast.success("Product added successfully");
-        setProduct({
-          title: "",
-          price: 0,
-          manufacturer: "",
-          inStock: 1,
-          mainImage: "",
-          description: "",
-          slug: "",
-          categoryId: "",
-        });
-      })
-      .catch((error) => {
-        toast.error("There was an error while creating product");
+    try {
+      await createProduct(product);
+      toast.success("Product added successfully");
+      setProduct({
+        title: "",
+        price: 0,
+        manufacturer: "",
+        inStock: 1,
+        mainImage: "",
+        description: "",
+        slug: "",
+        categoryId: "",
       });
+    } catch (error) {
+      toast.error("There was an error while creating product");
+    }
   };
 
   const uploadFile = async (file: any) => {
     const formData = new FormData();
     formData.append("uploadedFile", file);
-
     try {
-      const response = await fetch("http://localhost:3001/api/main-image", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-      } else {
-        console.error("File upload unsuccessfull");
-      }
+      await uploadMainImage(formData);
     } catch (error) {
       console.error("Error happend while sending request:", error);
     }
   };
 
-  const fetchCategories = async () => {
-    fetch(`http://localhost:3001/api/categories`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setCategories(data);
-        setProduct({
-          title: "",
-          price: 0,
-          manufacturer: "",
-          inStock: 1,
-          mainImage: "",
-          description: "",
-          slug: "",
-          categoryId: data[0]?.id,
-        });
-      });
+  const fetchCategoriesList = async () => {
+    const data = await fetchCategories();
+    setCategories(data);
+    setProduct((prev) => ({ ...prev, categoryId: data[0]?.id }));
   };
 
   useEffect(() => {
-    fetchCategories();
+    fetchCategoriesList();
   }, []);
 
   return (

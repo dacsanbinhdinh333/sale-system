@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { isValidCardNumber, isValidCreditCardCVVOrCVC, isValidCreditCardExpirationDate, isValidEmailAddressFormat, isValidNameOrLastname } from "@/lib/utils";
+import { createOrder, addOrderProduct } from "@/utils/api";
 
 const CheckoutPage = () => {
   const [checkoutForm, setCheckoutForm] = useState({
@@ -48,46 +49,34 @@ const CheckoutPage = () => {
         toast.error("You entered invalid format for name");
         return;
       }
-
       if (!isValidNameOrLastname(checkoutForm.lastname)) {
         toast.error("You entered invalid format for lastname");
         return;
       }
-
       if (!isValidEmailAddressFormat(checkoutForm.email)) {
         toast.error("You entered invalid format for email address");
         return;
       }
-
       if (!isValidNameOrLastname(checkoutForm.cardName)) {
         toast.error("You entered invalid format for card name");
         return;
       }
-
       if (!isValidCardNumber(checkoutForm.cardNumber)) {
         toast.error("You entered invalid format for credit card number");
         return;
       }
-
       if (!isValidCreditCardExpirationDate(checkoutForm.expirationDate)) {
         toast.error(
           "You entered invalid format for credit card expiration date"
         );
         return;
       }
-
       if (!isValidCreditCardCVVOrCVC(checkoutForm.cvc)) {
         toast.error("You entered invalid format for credit card CVC or CVV");
         return;
       }
-
-      // sending API request for creating a order
-      const response = fetch("http://localhost:3001/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      try {
+        const data = await createOrder({
           name: checkoutForm.name,
           lastname: checkoutForm.lastname,
           phone: checkoutForm.phone,
@@ -101,66 +90,44 @@ const CheckoutPage = () => {
           city: checkoutForm.city,
           country: checkoutForm.country,
           orderNotice: checkoutForm.orderNotice,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const orderId: string = data.id;
-          // for every product in the order we are calling addOrderProduct function that adds fields to the customer_order_product table
-          for (let i = 0; i < products.length; i++) {
-            let productId: string = products[i].id;
-            addOrderProduct(orderId, products[i].id, products[i].amount);
-          }
-        })
-        .then(() => {
-          setCheckoutForm({
-            name: "",
-            lastname: "",
-            phone: "",
-            email: "",
-            cardName: "",
-            cardNumber: "",
-            expirationDate: "",
-            cvc: "",
-            company: "",
-            adress: "",
-            apartment: "",
-            city: "",
-            country: "",
-            postalCode: "",
-            orderNotice: "",
-          });
-          clearCart();
-          toast.success("Order created successfuly");
-          setTimeout(() => {
-            router.push("/");
-          }, 1000);
         });
+        const orderId: string = data.id;
+        for (let i = 0; i < products.length; i++) {
+          await addOrderProduct({
+            customerOrderId: orderId,
+            productId: products[i].id,
+            quantity: products[i].amount,
+          });
+        }
+        setCheckoutForm({
+          name: "",
+          lastname: "",
+          phone: "",
+          email: "",
+          cardName: "",
+          cardNumber: "",
+          expirationDate: "",
+          cvc: "",
+          company: "",
+          adress: "",
+          apartment: "",
+          city: "",
+          country: "",
+          postalCode: "",
+          orderNotice: "",
+        });
+        clearCart();
+        toast.success("Order created successfuly");
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      } catch (error) {
+        toast.error("There was an error while creating order");
+      }
     } else {
       toast.error("You need to enter values in the input fields");
     }
   };
-
-  const addOrderProduct = async (
-    orderId: string,
-    productId: string,
-    productQuantity: number
-  ) => {
-    // sending API POST request for the table customer_order_product that does many to many relatioship for order and product
-    const response = await fetch("http://localhost:3001/api/order-product", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        customerOrderId: orderId,
-        productId: productId,
-        quantity: productQuantity,
-      }),
-    });
-  };
-
-  
 
   useEffect(() => {
     if (products.length === 0) {

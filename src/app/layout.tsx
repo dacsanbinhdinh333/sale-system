@@ -6,6 +6,7 @@ import SessionProvider from "@/utils/SessionProvider";
 import { getServerSession } from "next-auth";
 import 'svgmap/dist/svgMap.min.css';
 import Providers from "@/Providers";
+import ZaloChatBox from "@/components/ZaloChatBox";
 
 
 
@@ -32,6 +33,7 @@ export default async function RootLayout({
             {children}
           </Providers>
           <Footer />
+          <ZaloChatBox />
         </SessionProvider>
       </body>
     </html>

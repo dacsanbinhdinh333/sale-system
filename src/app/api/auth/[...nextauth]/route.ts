@@ -4,7 +4,7 @@ import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
-import prisma from "@/utils/db";
+import prisma from "@/server/prisma/db";
 import { nanoid } from "nanoid";
 
 const authOptions = {

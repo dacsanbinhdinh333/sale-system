@@ -1,4 +1,4 @@
-import prisma from "@/utils/db";
+import prisma from "@/server/prisma/db";
 import bcrypt from "bcryptjs";
 import { nanoid } from "nanoid";
 import { NextResponse } from "next/server";

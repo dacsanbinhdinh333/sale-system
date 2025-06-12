@@ -7,6 +7,7 @@ COPY . .
 FROM base AS backend
 WORKDIR /app/src/server
 RUN npm install
+RUN npx prisma generate --schema=prisma/schema.prisma
 
 # ---------- Frontend ----------
 FROM base AS frontend

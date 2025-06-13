@@ -6,6 +6,19 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
+      <div className="w-full px-6 lg:px-8 mt-10">
+        <div className="w-full h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden rounded-xl shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.3735478740127!2d109.2568424!3d13.8165939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6bb79cda1651%3A0xfa56a68acd59f6ec!2zVHLhuqFtIHjEg25nIGThuqd1IFF14buRYyBUaOG6r25nIChDT1ZJQ08uTFREKQ!5e0!3m2!1svi!2s!4v1749740607350!5m2!1svi!2s9"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            style={{ border: 0 }}
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
       <div>
         <h2 id="footer-heading" className="sr-only">
           Footer

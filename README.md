@@ -1,6 +1,39 @@
-<h1>Electronics eCommerce Shop With Admin Dashboard in Next.js and Node.js</h1>
+# Shop With Admin Dashboard in Next.js and Node.js
 
-<p><b>Electronics eCommerce shop with admin dashboard in Next.js and Node.js</b> is a <b>free eCommerce store</b> developed using Next.js, Node.js and MySQL. The application is completely built from scratch(custom design) and completely responsive.
+## Run Source (Subsequent Runs)
+
+For running the project after the initial setup, follow these steps:
+
+1. **Navigate to Server Folder and Install Dependencies**  
+   Open a terminal, navigate to the server folder, and install any updated dependencies:
+   ```bash
+   cd src/server
+   npm install
+   ```
+
+2. **Generate Prisma Client**  
+   From the `src/server` folder, generate the Prisma client:
+   ```bash
+   npm run prisma:generate
+   ```
+
+3. **Start the Backend**  
+   Still in the `src/server` folder, start the backend server:
+   ```bash
+   npm run dev
+   ```
+
+4. **Start the Frontend**  
+   Open a new terminal in the root project folder, install any updated dependencies, and start the frontend:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+5. **Access the Application**  
+   Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app live!
+
+<p><b>shop with admin dashboard in Next.js and Node.js</b> is a <b>free eCommerce store</b> developed using Next.js, Node.js and MySQL. The application is completely built from scratch(custom design) and completely responsive.
 Singitronic is a modern online shop that specializes in selling all types of electronic products. The goal of the project is to create a modern web application <b>by following key stages in software engineering</b>. 
 I have created this online shop as part of my college exam in software engineering with <b>Bojan Cesnak</b> - <a href="https://github.com/cesnak02" target="_blank">@cesnak02</a>. Together with the application, we created detailed <b>40 pages software engineering documentation</b>. We will describe the main parts of the documentaion in the repository description. Main resource for the software engineering documentation is the book „Razvoj aplikativnog softvera“ by Singidunum University professor Violeta Tomašević. Also, college lectures by Violeta Tomašević and Petar Kresoja helped us a lot with the implementation of the application.</p>
 
@@ -127,48 +160,51 @@ NEXTAUTH_URL=http://localhost:3000
 ```
 DATABASE_URL="mysql://username:password@localhost:3306/singitronic_nextjs"
 ```
+## Run Source
 
-<p>8. Now you need to open your terminal of choice in the root folder of the project and write:</p>
+Follow these steps to set up and run the project:
 
+1. **Install Root Dependencies**  
+   In the root project folder, open a terminal and run:
+   ```bash
+   npm install
+   ```
 
-```
-npm install
-```
+2. **Install Server Dependencies**  
+   Navigate to the server folder and install dependencies:
+   ```bash
+   cd src/server
+   npm install
+   ```
 
-<p>9. Now you need to navigate with the terminal in the server folder and install everything:</p>
+3. **Apply Prisma Migrations**  
+   From the `src/server` folder, run the Prisma migration:
+   ```bash
+   npx prisma migrate dev
+   ```
 
-```
-cd server
-npm install
-```
+4. **Insert Demo Data**  
+   Move to the `utils` folder and execute the demo data script:
+   ```bash
+   cd utils
+   node insertDemoData.js
+   ```
 
-<p>10. You will need to run the Prisma migration now. Make sure you are in the server folder and write:</p>
+5. **Start the Backend**  
+   Return to the `src/server` folder and run the backend:
+   ```bash
+   cd ..
+   node app.js
+   ```
 
-```
-npx prisma migrate dev
-```
+6. **Start the Frontend**  
+   Open a new terminal in the root project folder (keep the backend running) and run:
+   ```bash
+   npm run dev
+   ```
 
-<p>11. Next is to insert demo data. To do it you need to go to the server/utills folder and call insertDemoData.js:</p>
-
-```
-cd utills
-node insertDemoData.js
-```
-
-<p>12. Now you can go back to the server folder and run the backend:</p>
-
-```
-cd ..
-node app.js
-```
-
-<p>13. While your backend is running you need to open another terminal(don't stop the backend). In the second terminal, you need to make sure you are in your root project folder and write the following:</p>
-
-```
-npm run dev
-```
-
-<p>14. Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> and see it live!</p>
+7. **Access the Application**  
+   Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app live!
 
 
 <h2>Project screenshots</h2>

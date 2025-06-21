@@ -1,4 +1,4 @@
 node_modules
 .next
 Dockerfile
-pm2.config.js
+# pm2.config.js

@@ -2,8 +2,11 @@ module.exports = {
   apps: [
     {
       name: "backend",
-      script: "server/app.js",
-      cwd: "server",
+      script: "app.js",
+      cwd: "src/server",
+      env: {
+        PORT: "3001",
+      },
     },
     {
       name: "frontend",
